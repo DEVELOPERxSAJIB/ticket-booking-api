@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: ["https://ticket-booking-client-chi.vercel.app/", "http://localhost:5173"],
+    origin: ["https://ticket-booking-client-chi.vercel.app", "http://localhost:5173"],
     credentials: true,
   })
 );
