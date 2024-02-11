@@ -114,7 +114,7 @@ const userLogin = async (req, res, next) => {
     res.cookie("accessToken", accessToken, {
       httpOnly: true,
       secure: process.env.MODE == "Development" ? false : true,
-      sameSite: "strict",
+      sameSite: "Lax",
       maxAge: 1000 * 60 * 60 * 24 * 7,
     });
 
