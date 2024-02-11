@@ -113,7 +113,7 @@ const userLogin = async (req, res, next) => {
     // set token to cookie memory as accessToken
     res.cookie("accessToken", accessToken, {
       httpOnly: true,
-      secure: process.env.MODE == "Development" ? false : true,
+      secure: process.env.ENV_MODE === "Development" ? false : true,
       sameSite: "Lax",
       maxAge: 1000 * 60 * 60 * 24 * 7,
     });
