@@ -111,12 +111,8 @@ const userLogin = async (req, res, next) => {
 
     // set token to cookie memory as accessToken
     res.cookie("accessToken", accessToken, {
-      httpOnly: true,
-      secure: true,
-      sameSite: "Lax",
+      secure: process.env.ENV_MODE === "Development" ? false : true,
       maxAge: 1000 * 60 * 60 * 24 * 7,
-      domain: 'ticket-booking-client-chi.vercel.app',
-      path: '/',
     });
 
     // send res
