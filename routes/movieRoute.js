@@ -21,7 +21,7 @@ movieRoute.post(
   verifyToken,
   createMovie
 );
-movieRoute.get("/all-movies", verifyToken, getAllMovies);
+movieRoute.get("/all-movies", getAllMovies);
 movieRoute.get("/single-movie/:id", getSingleMovies);
 movieRoute.delete("/delete/:id", verifyToken, deleteMovie);
 movieRoute.put("/update-movie/:id", verifyToken, updateMovie);

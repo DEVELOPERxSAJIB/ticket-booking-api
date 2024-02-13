@@ -16,6 +16,7 @@ const bookingRoute = require("./routes/bookingRoute.js");
 const app = express();
 
 // init express middlewares
+app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
@@ -27,7 +28,7 @@ app.use(
     credentials: true,
   })
 );
-app.use(cookieParser());
+
 
 // routes
 app.use("/api/v1/user", userRoute);

@@ -110,18 +110,20 @@ const userLogin = async (req, res, next) => {
     );
 
     // set token to cookie memory as accessToken
-    res.cookie("accessToken", accessToken, {
-      secure: process.env.ENV_MODE === "Development" ? false : true,
-      maxAge: 1000 * 60 * 60 * 24 * 7,
-    });
+    res
+      .cookie("accessToken", accessToken, {
+        httpOnly: true,
+        secure: process.env.ENV_MODE === "Development" ? false : true,
+        sameSite: "Lax",
+        maxAge: 1000 * 60 * 60 * 24 * 7,
+      })
+      .status(200)
+      .json({
+        token: accessToken,
+        message: "user successfully logged in",
+        payload: { user: validateEmail },
+      });
 
-    // send res
-    successResponse(res, {
-      statusCode: 200,
-      message: "user successfully logged in",
-      payload: { user: validateEmail },
-      token: accessToken,
-    });
   } catch (error) {
     next(error);
   }

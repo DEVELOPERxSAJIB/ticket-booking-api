@@ -31,8 +31,6 @@ const verifyToken = (req, res, next) => {
           "-password"
         );
 
-        console.log(user)
-
         req.user = user;
 
         next();
