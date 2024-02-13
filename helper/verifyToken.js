@@ -4,10 +4,8 @@ const User = require("../models/User");
 
 const verifyToken = (req, res, next) => {
   try {
-    // const token = req.headers.Authorization || req.headers.authorization;
-    // const accessToken = token.replace("Bearer ", "")
 
-    const { accessToken } = req.cookies
+    const accessToken = req?.cookies?.accessToken || req?.headers?.authorization;
 
     if (!accessToken) {
       return errorResponse(res, {
