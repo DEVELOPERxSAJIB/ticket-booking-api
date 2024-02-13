@@ -113,9 +113,11 @@ const userLogin = async (req, res, next) => {
     res
       .cookie("accessToken", accessToken, {
         httpOnly: true,
-        secure: process.env.ENV_MODE === "Development" ? false : true,
-        sameSite: "strict",
+        // secure: process.env.ENV_MODE === "Development" ? false : true,
+        secure : true,
+        sameSite: "none",
         path: "/",
+        // domain: "ticket-booking-client-vite.onrender.com",
         maxAge: 1000 * 60 * 60 * 24 * 7,
       })
       .status(200)
@@ -124,7 +126,6 @@ const userLogin = async (req, res, next) => {
         message: "user successfully logged in",
         payload: { user: validateEmail },
       });
-
   } catch (error) {
     next(error);
   }

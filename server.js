@@ -18,16 +18,18 @@ app.use(cookieParser());
 
 // init express middlewares
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 app.use(
   cors({
     origin: [
+      "https://ticket-booking-client-vite.onrender.com",
       "https://ticket-booking-client-chi.vercel.app",
       "http://localhost:5173",
     ],
     credentials: true,
   })
 );
+
 
 
 // routes
